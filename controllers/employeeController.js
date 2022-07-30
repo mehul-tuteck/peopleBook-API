@@ -18,7 +18,7 @@ const getAllEmployees = async (req, res, next) => {
       };
     });
 
-    const response = await Promise.all(response);
+    const response = await Promise.all(promises);
     return res
       .status(200)
       .send(
@@ -85,7 +85,7 @@ const getEmployeeById = async (req, res, next) => {
   }
 };
 
-const getEmployeeBySearchTerm = async (req, res, next) => {
+const getEmployeesBySearchTerm = async (req, res, next) => {
   const { term } = req.params;
 
   try {
@@ -141,7 +141,7 @@ const getEmployeeBySearchTerm = async (req, res, next) => {
   }
 };
 
-const getEmployeeByDepartment = async (req, res, next) => {
+const getEmployeesByDepartment = async (req, res, next) => {
   const { department } = req.params;
   try {
     const employeeList = await Employee.find({ department });
@@ -193,7 +193,7 @@ const getEmployeeByDepartment = async (req, res, next) => {
   }
 };
 
-const getEmployeeByRole = async (req, res, next) => {
+const getEmployeesByRole = async (req, res, next) => {
   const { role } = req.params;
 
   try {
@@ -406,10 +406,10 @@ const deleteEmployee = async (req, res, next) => {
 module.exports = {
   getAllEmployees,
   getEmployeeById,
-  getEmployeeBySearchTerm,
+  getEmployeesBySearchTerm,
   createEmployee,
   editEmployee,
   deleteEmployee,
-  getEmployeeByDepartment,
-  getEmployeeByRole,
+  getEmployeesByDepartment,
+  getEmployeesByRole,
 };

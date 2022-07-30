@@ -50,8 +50,8 @@ const login = async (req, res, next) => {
         );
     }
 
-    const { _id } = employee;
-    const accessToken = jwt.sign({ _id }, process.env.JWT_SECRET, {
+    const { _id,role } = employee;
+    const accessToken = jwt.sign({ _id,role }, process.env.JWT_SECRET, {
       expiresIn: "72h",
     });
 
